@@ -4,11 +4,14 @@ namespace TestCounter;
 
 public class Tests
 {
-    [SetUp]
-    public void Setup()
-    {
-    }
-
+    /// <summary>
+    /// Test counter creation
+    ///
+    /// Initial value == 0
+    /// Initial max == null
+    /// Initial min == null
+    /// Initial step == 1
+    /// </summary>
     [Test]
     public void TestCreate()
     {
@@ -22,6 +25,11 @@ public class Tests
         });
     }
 
+    /// <summary>
+    /// Test increment
+    ///
+    /// Increment() => value == 1
+    /// </summary>
     [Test]
     public void TestIncrement()
     {
@@ -30,6 +38,11 @@ public class Tests
         Assert.That(counter.Value, Is.EqualTo(1));
     }
 
+    /// <summary>
+    /// Test decrement
+    ///
+    /// Decrement() => value == -1
+    /// </summary>
     [Test]
     public void TestDecrement()
     {
@@ -38,6 +51,11 @@ public class Tests
         Assert.That(counter.Value, Is.EqualTo(-1));
     }
 
+    /// <summary>
+    /// Test update min value
+    ///
+    /// value can't go lower than min
+    /// </summary>
     [Test]
     public void TestMin()
     {
@@ -47,6 +65,11 @@ public class Tests
         Assert.That(counter.Value, Is.EqualTo(0));
     }
 
+    /// <summary>
+    /// Test update max value
+    ///
+    /// value can't go higher than max
+    /// </summary>
     [Test]
     public void TestMax()
     {
@@ -56,6 +79,12 @@ public class Tests
         Assert.That(counter.Value, Is.EqualTo(0));
     }
 
+    /// <summary>
+    /// Test step
+    ///
+    /// Set step to 2
+    /// Increment() => value == 2
+    /// </summary>
     [Test]
     public void TestStep()
     {
@@ -67,6 +96,11 @@ public class Tests
         Assert.That(counter.Value, Is.EqualTo(0));
     }
 
+    /// <summary>
+    /// Test reset
+    ///
+    /// Reset() => value == 0
+    /// </summary>
     [Test]
     public void TestReset()
     {
@@ -79,6 +113,11 @@ public class Tests
         Assert.That(counter.Value, Is.EqualTo(0));
     }
 
+    /// <summary>
+    /// Test update negative step
+    ///
+    /// Throws Exception
+    /// </summary>
     [Test]
     public void TestUpdateNegativeStep()
     {
@@ -87,6 +126,11 @@ public class Tests
         Assert.Throws<Exception>(() => counter.Update(counter.Min, counter.Max, -1));
     }
 
+    /// <summary>
+    /// Test incoherent min max update
+    ///
+    /// Throws Exception
+    /// </summary>
     [Test]
     public void TestUpdateMaxLowerOrEqualThanMin()
     {
