@@ -1,0 +1,5 @@
+/Users/rchdeveloper/Documents/GitHub/CounterApi/TestCounter/obj/Debug/net7.0/TestCounter.csproj.AssemblyReference.cache
+/Users/rchdeveloper/Documents/GitHub/CounterApi/TestCounter/obj/Debug/net7.0/TestCounter.GeneratedMSBuildEditorConfig.editorconfig
+/Users/rchdeveloper/Documents/GitHub/CounterApi/TestCounter/obj/Debug/net7.0/TestCounter.AssemblyInfoInputs.cache
+/Users/rchdeveloper/Documents/GitHub/CounterApi/TestCounter/obj/Debug/net7.0/TestCounter.AssemblyInfo.cs
+/Users/rchdeveloper/Documents/GitHub/CounterApi/TestCounter/obj/Debug/net7.0/TestCounter.csproj.CoreCompileInputs.cache
