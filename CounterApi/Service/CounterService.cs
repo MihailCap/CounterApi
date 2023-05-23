@@ -12,12 +12,12 @@ namespace CounterApi.Service
             this.context = context;
         }
 
-        public ICounter Create(string name)
+        public ICounter? Create(string name)
         {
             throw new NotImplementedException();
         }
 
-        public ICounter Decrement(string name)
+        public ICounter? Decrement(string name)
         {
             throw new NotImplementedException();
         }
@@ -27,7 +27,7 @@ namespace CounterApi.Service
             throw new NotImplementedException();
         }
 
-        public ICounter Get(string name)
+        public ICounter? Get(string name)
         {
             throw new NotImplementedException();
         }
@@ -37,17 +37,17 @@ namespace CounterApi.Service
             throw new NotImplementedException();
         }
 
-        public ICounter Increment(string name)
+        public ICounter? Increment(string name)
         {
             throw new NotImplementedException();
         }
 
-        public ICounter Reset(string name)
+        public ICounter? Reset(string name)
         {
             throw new NotImplementedException();
         }
 
-        public ICounter Update(string name, int? max, int? min, int? step)
+        public ICounter? Update(string name, int? max, int? min, int? step)
         {
             throw new NotImplementedException();
         }
