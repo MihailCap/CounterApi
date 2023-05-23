@@ -78,4 +78,20 @@ public class Tests
         counter.Reset();
         Assert.That(counter.Value, Is.EqualTo(0));
     }
+
+    [Test]
+    public void TestUpdateNegativeStep()
+    {
+        ICounter counter = new Counter();
+
+        Assert.Throws<Exception>(() => counter.Update(counter.Min, counter.Max, -1));
+    }
+
+    [Test]
+    public void TestUpdateMaxLowerOrEqualThanMin()
+    {
+        ICounter counter = new Counter();
+        Assert.Throws<Exception>(() => counter.Update(1, 0, counter.Step));
+        Assert.Throws<Exception>(() => counter.Update(1, 1, counter.Step));
+    }
 }
