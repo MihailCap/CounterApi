@@ -10,12 +10,12 @@
 using System;
 using System.Reflection;
 
-[assembly: System.Reflection.AssemblyCompanyAttribute("CounterApi")]
+[assembly: System.Reflection.AssemblyCompanyAttribute("TestCounter")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
 [assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
-[assembly: System.Reflection.AssemblyProductAttribute("CounterApi")]
-[assembly: System.Reflection.AssemblyTitleAttribute("CounterApi")]
+[assembly: System.Reflection.AssemblyProductAttribute("TestCounter")]
+[assembly: System.Reflection.AssemblyTitleAttribute("TestCounter")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
 
 // Generato dalla classe WriteCodeFragment di MSBuild.

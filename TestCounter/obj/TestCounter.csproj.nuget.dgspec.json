@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/rchdeveloper/Documents/GitHub/CounterApi/CounterApi/CounterApi.csproj": {}
+    "/Users/rchdeveloper/Documents/GitHub/CounterApi/TestCounter/TestCounter.csproj": {}
   },
   "projects": {
-    "/Users/rchdeveloper/Documents/GitHub/CounterApi/CounterApi/CounterApi.csproj": {
+    "/Users/rchdeveloper/Documents/GitHub/CounterApi/TestCounter/TestCounter.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/rchdeveloper/Documents/GitHub/CounterApi/CounterApi/CounterApi.csproj",
-        "projectName": "CounterApi",
-        "projectPath": "/Users/rchdeveloper/Documents/GitHub/CounterApi/CounterApi/CounterApi.csproj",
+        "projectUniqueName": "/Users/rchdeveloper/Documents/GitHub/CounterApi/TestCounter/TestCounter.csproj",
+        "projectName": "TestCounter",
+        "projectPath": "/Users/rchdeveloper/Documents/GitHub/CounterApi/TestCounter/TestCounter.csproj",
         "packagesPath": "/Users/rchdeveloper/.nuget/packages/",
-        "outputPath": "/Users/rchdeveloper/Documents/GitHub/CounterApi/CounterApi/obj/",
+        "outputPath": "/Users/rchdeveloper/Documents/GitHub/CounterApi/TestCounter/obj/",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
@@ -43,13 +43,25 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "dependencies": {
-            "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore": {
+            "Microsoft.NET.Test.Sdk": {
               "target": "Package",
-              "version": "[7.0.5, )"
+              "version": "[17.5.0, )"
             },
-            "Microsoft.EntityFrameworkCore.InMemory": {
+            "NUnit": {
               "target": "Package",
-              "version": "[7.0.5, )"
+              "version": "[3.13.3, )"
+            },
+            "NUnit.Analyzers": {
+              "target": "Package",
+              "version": "[3.6.1, )"
+            },
+            "NUnit3TestAdapter": {
+              "target": "Package",
+              "version": "[4.4.2, )"
+            },
+            "coverlet.collector": {
+              "target": "Package",
+              "version": "[3.2.0, )"
             }
           },
           "imports": [
@@ -64,9 +76,6 @@
           "assetTargetFallback": true,
           "warn": true,
           "frameworkReferences": {
-            "Microsoft.AspNetCore.App": {
-              "privateAssets": "none"
-            },
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
