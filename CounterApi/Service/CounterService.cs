@@ -47,7 +47,7 @@ namespace CounterApi.Service
             throw new NotImplementedException();
         }
 
-        public ICounter? Update(string name, int? max, int? min, int? step)
+        public ICounter? Update(string name, int? max, int? min, int? step, string? newName = null)
         {
             throw new NotImplementedException();
         }
