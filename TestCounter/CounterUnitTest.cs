@@ -1,4 +1,4 @@
-using CounterApi;
+using CounterApi.Domain;
 
 namespace TestCounter;
 

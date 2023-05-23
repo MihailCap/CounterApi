@@ -1657,38 +1657,34 @@
     ]
   },
   "packageFolders": {
-    "/Users/rchdeveloper/.nuget/packages/": {},
-    "/usr/local/share/dotnet/sdk/NuGetFallbackFolder": {}
+    "C:\\Users\\mcapbatut\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/rchdeveloper/Documents/GitHub/CounterApi/TestCounter/TestCounter.csproj",
+      "projectUniqueName": "C:\\Users\\mcapbatut\\Documents\\GitHub\\CounterApi\\TestCounter\\TestCounter.csproj",
       "projectName": "TestCounter",
-      "projectPath": "/Users/rchdeveloper/Documents/GitHub/CounterApi/TestCounter/TestCounter.csproj",
-      "packagesPath": "/Users/rchdeveloper/.nuget/packages/",
-      "outputPath": "/Users/rchdeveloper/Documents/GitHub/CounterApi/TestCounter/obj/",
+      "projectPath": "C:\\Users\\mcapbatut\\Documents\\GitHub\\CounterApi\\TestCounter\\TestCounter.csproj",
+      "packagesPath": "C:\\Users\\mcapbatut\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\mcapbatut\\Documents\\GitHub\\CounterApi\\TestCounter\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
-      ],
       "configFilePaths": [
-        "/Users/rchdeveloper/.nuget/NuGet/NuGet.Config"
+        "C:\\Users\\mcapbatut\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net7.0"
       ],
       "sources": {
-        "/usr/local/share/dotnet/library-packs": {},
-        "https://api.nuget.org/v3/index.json": {},
-        "https://repo.rchrnd.com/repository/nuget-hosted/index.json": {}
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net7.0": {
           "targetAlias": "net7.0",
           "projectReferences": {
-            "/Users/rchdeveloper/Documents/GitHub/CounterApi/CounterApi/CounterApi.csproj": {
-              "projectPath": "/Users/rchdeveloper/Documents/GitHub/CounterApi/CounterApi/CounterApi.csproj"
+            "C:\\Users\\mcapbatut\\Documents\\GitHub\\CounterApi\\CounterApi\\CounterApi.csproj": {
+              "projectPath": "C:\\Users\\mcapbatut\\Documents\\GitHub\\CounterApi\\CounterApi\\CounterApi.csproj"
             }
           }
         }
@@ -1740,7 +1736,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.203/RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.302\\RuntimeIdentifierGraph.json"
       }
     }
   }

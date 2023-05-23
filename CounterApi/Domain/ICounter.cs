@@ -1,4 +1,4 @@
-﻿namespace CounterApi
+﻿namespace CounterApi.Domain
 {
     public interface ICounter
     {
