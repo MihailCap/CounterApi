@@ -18,9 +18,11 @@ public class CounterServiceUnitTests
     [SetUp]
     public void Init()
     {
-        var mockContext = new Mock<CounterDb>();
-        mockContext.Setup<DbSet<Counter>>(x => x.Counters).ReturnsDbSet(TestDataHelper.GetFakeCountersList());
-        context = mockContext.Object;
+        var options = new DbContextOptionsBuilder<CounterDb>()
+            .UseInMemoryDatabase(databaseName: "CounterDb")
+            .Options;
+        context = new CounterDb(options);
+        context.AddRange(TestDataHelper.GetFakeCountersList());
     }
 
     /// <summary>

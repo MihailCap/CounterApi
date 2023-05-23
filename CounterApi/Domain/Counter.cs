@@ -1,7 +1,10 @@
-﻿namespace CounterApi.Domain
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace CounterApi.Domain
 {
     public class Counter : ICounter
     {
+        [Key]
         public string Name { get; set; }
         public int Value { get; set; }
         public int? Min { get; set; }
