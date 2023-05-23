@@ -2,23 +2,21 @@
 {
     public class Counter : ICounter
     {
-
-
+        public string Name { get; set; }
         public int Value { get; set; }
         public int? Min { get; set; }
         public int? Max { get; set; }
         public int Step { get; set; }
-      
 
-        public Counter()
+        public Counter(string name = "")
         {
+            Name = name;
             Value = 0;
             Min = null;
             Max = null;
             Step = 1;
 
         }
-
 
         public void Increment()
         {
@@ -51,6 +49,7 @@
                 Value -= Step;
             }
         }
+
         public void Reset()
         {
             Value = 0;
