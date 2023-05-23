@@ -8,15 +8,15 @@
         public int? Min { get; set; }
         public int? Max { get; set; }
         public int Step { get; set; }
-      
+        public string Name { get; set; }
 
-        public Counter()
+        public Counter(string name)
         {
             Value = 0;
             Min = null;
             Max = null;
             Step = 1;
-
+            Name = name;
         }
 
 
@@ -39,6 +39,7 @@
 
         public void Decrement()
         {
+
             if (Min != null)
             {
                 if (Value > Min)
@@ -50,6 +51,7 @@
             {
                 Value -= Step;
             }
+
         }
         public void Reset()
         {
@@ -60,7 +62,7 @@
         }
 
 
-        public void Update(int? min, int? max, int step)
+        public void Update(int? min, int? max, int step, string name)
         {
             if (step > 0)
             {
@@ -68,6 +70,7 @@
                 {
                     if (min < max)
                     {
+                        Name = name;
                         Max = max;
                         Min = min;
                         Step = step;
@@ -80,6 +83,7 @@
                 }
                 else
                 {
+                    Name = name;
                     Max = max;
                     Min = min;
                     Step = step;
@@ -90,5 +94,7 @@
                 throw new Exception("valore non valido");
             }
         }
+
+        
     }
 }

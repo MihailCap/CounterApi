@@ -7,7 +7,7 @@ namespace CounterApi.Service
         IEnumerable<ICounter> GetAll();
         ICounter Get(string name);
         ICounter Create(string name);
-        ICounter Update(string name, int? max, int? min, int? step);
+        ICounter Update(int? max, int? min, int step, string name);
         ICounter Increment(string name);
         ICounter Decrement(string name);
         ICounter Reset(string name);

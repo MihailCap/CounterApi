@@ -6,9 +6,10 @@
         int? Min { get; }
         int? Max { get; }
         int Step { get; }
+        string Name { get; }
         void Increment();
         void Decrement();
         void Reset();
-        void Update(int? min, int? max, int step);
+        void Update(int? min, int? max, int step, string name);
     }
 }
