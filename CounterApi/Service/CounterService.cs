@@ -13,7 +13,7 @@ namespace CounterApi.Service
             this.context = context;
         }
 
-        public ICounter Create(string name)
+        public ICounter? Create(string name)
         {
             if (name == null || name == "") { throw new ArgumentNullException("name empty"); }else {
                 Counter C1 = new(name);
@@ -22,7 +22,7 @@ namespace CounterApi.Service
             }
         }
 
-        public ICounter Decrement(string name)
+        public ICounter? Decrement(string name)
         {
 
             Counter c1 = context.Counters.FirstOrDefault(Counter => Counter.Name == name);
@@ -69,7 +69,7 @@ namespace CounterApi.Service
             foreach (var counter in context.Counters) { yield return counter; }
         }
 
-        public ICounter Increment(string name)
+        public ICounter? Increment(string name)
         {
             Counter c1 = context.Counters.FirstOrDefault(Counter => Counter.Name == name);
             if (c1 != null)

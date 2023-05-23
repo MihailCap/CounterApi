@@ -2,6 +2,7 @@
 {
     public interface ICounter
     {
+        string Name { get; }
         int Value { get; }
         int? Min { get; }
         int? Max { get; }

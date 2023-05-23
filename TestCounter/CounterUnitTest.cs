@@ -2,7 +2,7 @@ using CounterApi.Domain;
 
 namespace TestCounter;
 
-public class Tests
+public class CounterUnitTests
 {
     /// <summary>
     /// Test counter creation
