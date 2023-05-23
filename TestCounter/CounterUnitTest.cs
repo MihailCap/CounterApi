@@ -15,7 +15,7 @@ public class CounterUnitTests
     [Test]
     public void TestCreate()
     {
-        ICounter counter = new Counter();
+        ICounter counter = new Counter("name");
         Assert.Multiple(() =>
         {
             Assert.That(counter.Value, Is.EqualTo(0));
@@ -33,7 +33,7 @@ public class CounterUnitTests
     [Test]
     public void TestIncrement()
     {
-        ICounter counter = new Counter();
+        ICounter counter = new Counter("name");
         counter.Increment();
         Assert.That(counter.Value, Is.EqualTo(1));
     }
@@ -46,7 +46,7 @@ public class CounterUnitTests
     [Test]
     public void TestDecrement()
     {
-        ICounter counter = new Counter();
+        ICounter counter = new Counter("name");
         counter.Decrement();
         Assert.That(counter.Value, Is.EqualTo(-1));
     }
@@ -59,7 +59,7 @@ public class CounterUnitTests
     [Test]
     public void TestMin()
     {
-        ICounter counter = new Counter();
+        ICounter counter = new Counter("name");
         counter.Update(0, counter.Max, counter.Step);
         counter.Decrement();
         Assert.That(counter.Value, Is.EqualTo(0));
@@ -73,7 +73,7 @@ public class CounterUnitTests
     [Test]
     public void TestMax()
     {
-        ICounter counter = new Counter();
+        ICounter counter = new Counter("name");
         counter.Update(counter.Min, 0, counter.Step);
         counter.Increment();
         Assert.That(counter.Value, Is.EqualTo(0));
@@ -88,7 +88,7 @@ public class CounterUnitTests
     [Test]
     public void TestStep()
     {
-        ICounter counter = new Counter();
+        ICounter counter = new Counter("name");
         counter.Update(counter.Min, counter.Max, 2);
         counter.Increment();
         Assert.That(counter.Value, Is.EqualTo(2));
@@ -104,7 +104,7 @@ public class CounterUnitTests
     [Test]
     public void TestReset()
     {
-        ICounter counter = new Counter();
+        ICounter counter = new Counter("name");
         counter.Increment();
         counter.Increment();
         counter.Increment();
@@ -121,7 +121,7 @@ public class CounterUnitTests
     [Test]
     public void TestUpdateNegativeStep()
     {
-        ICounter counter = new Counter();
+        ICounter counter = new Counter("name");
 
         Assert.Throws<Exception>(() => counter.Update(counter.Min, counter.Max, -1));
     }
@@ -134,7 +134,7 @@ public class CounterUnitTests
     [Test]
     public void TestUpdateMaxLowerOrEqualThanMin()
     {
-        ICounter counter = new Counter();
+        ICounter counter = new Counter("name");
         Assert.Throws<Exception>(() => counter.Update(1, 0, counter.Step));
         Assert.Throws<Exception>(() => counter.Update(1, 1, counter.Step));
     }

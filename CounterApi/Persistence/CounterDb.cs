@@ -5,10 +5,9 @@ namespace CounterApi.Persistence
 {
     public class CounterDb : DbContext
     {
-        public DbSet<Counter> Counters { get; set; }
+        public DbSet<Counter> Counters => Set<Counter>();
         public CounterDb(DbContextOptions options) : base(options)
         {
-            Counters = new HashSet<Counter>();
         }
        
     }

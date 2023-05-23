@@ -42,26 +42,15 @@ namespace CounterApi.Service
             Counter c1 = context.Counters.FirstOrDefault(Counter => Counter.Name == name);
             if(c1 != null) 
             {
-                return context.Counters.Remove(c1);
-            } else
-            {
-                throw new NotImplementedException();
-            }
-            
-            
+                context.Counters.Remove(c1);
+            } 
+
+            return context.SaveChanges() > 0;
         }
 
-        public ICounter Get(string name)
+        public ICounter? Get(string name)
         {
-            Counter c1 = context.Counters.FirstOrDefault(Counter => Counter.Name == name);
-            if (c1 != null)
-            {
-                return c1;
-            }
-            else
-            {
-                throw new NotImplementedException();
-            }
+            return context.Counters.FirstOrDefault(Counter => Counter.Name == name);
         }
 
         public IEnumerable<ICounter> GetAll()
@@ -75,42 +64,30 @@ namespace CounterApi.Service
             if (c1 != null)
             {
                 c1.Increment();
-                return c1;
             }
-            else
-            {
-                throw new NotImplementedException();
-            }
+            return c1;
             
         }
 
-        public ICounter Reset(string name)
+        public ICounter? Reset(string name)
         {
             Counter c1 = context.Counters.FirstOrDefault(Counter => Counter.Name == name);
             if (c1 != null)
             {
                 c1.Reset();
-                return c1;
             }
-            else
-            {
-                throw new NotImplementedException();
-            }
-           
+            return c1;
+
         }
 
-        public ICounter Update(int? min, int? max, int step, string name)
+        public ICounter? Update(string name, int? max, int? min, int? step, string? newName = null)
         {
             Counter c1 = context.Counters.FirstOrDefault(Counter => Counter.Name == name);
             if (c1 != null)
             {
-                c1.Update(min, max, step, name);
-                return c1;
+                c1.Update(min, max, step ?? c1.Step, name);
             }
-            else
-            {
-                throw new NotImplementedException();
-            }
+            return c1;
         }
     }
 }
