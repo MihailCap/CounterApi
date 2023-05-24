@@ -115,11 +115,12 @@ namespace CounterApi.Service
                 {
                     if (newName != null && newName != name)
                     {
-
+                        Counter saveCounter = counter;
                         context.Counters.Remove(counter);
                         context.SaveChanges(true);
                         var updatedCounter = new Counter(newName);
-                        updatedCounter.Update(min, max, step);
+                        updatedCounter.Value = saveCounter.Value;
+                        updatedCounter.Update(min ?? saveCounter.Min, max ?? saveCounter.Max, step ?? saveCounter.Step);
                         context.Counters.Add(updatedCounter);
                         context.SaveChanges();
                         return updatedCounter;
@@ -127,11 +128,9 @@ namespace CounterApi.Service
                     else
                     {
                         counter.Update(min, max, step ?? counter.Step);
-                        context.SaveChanges() ;
+                        context.SaveChanges();
                         return counter;
                     }
-                   
-
                 }
                 catch (Exception)
                 {

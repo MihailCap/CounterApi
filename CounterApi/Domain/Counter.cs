@@ -35,6 +35,7 @@ namespace CounterApi.Domain
                         Value = oldValue;
                     }
                 }
+                
             }
             else
             {
@@ -76,13 +77,25 @@ namespace CounterApi.Domain
 
         public void Update(int? min, int? max, int? step)
         {
-            if ( (step != null && step <= 0) || (max != null && min != null && max <= min))
+            if ((step != null && step <= 0) || (max != null && min != null && max <= min))
             {
                 throw new Exception("valore non valido");
             }
-            Min = min;
-            Max = max;
-            Step = step ?? Step;
+            else
+            {
+                Min = min;
+                Max = max;
+                Step = step ?? Step;
+                if (Value < Min)
+                {
+                    Value = Min.Value;
+                }
+                if (Value > Max)
+                {
+                    Value = Max.Value;
+                }
+            }
+            
         }
 
         
