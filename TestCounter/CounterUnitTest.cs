@@ -60,9 +60,10 @@ public class CounterUnitTests
     public void TestMin()
     {
         ICounter counter = new Counter("name");
-        counter.Update(0, counter.Max, counter.Step);
+        counter.Update(1, counter.Max, counter.Step);
+        Assert.That(counter.Value, Is.EqualTo(1));
         counter.Decrement();
-        Assert.That(counter.Value, Is.EqualTo(0));
+        Assert.That(counter.Value, Is.EqualTo(1));
     }
 
     /// <summary>
@@ -74,7 +75,9 @@ public class CounterUnitTests
     public void TestMax()
     {
         ICounter counter = new Counter("name");
+        counter.Increment();
         counter.Update(counter.Min, 0, counter.Step);
+        Assert.That(counter.Value, Is.EqualTo(0));
         counter.Increment();
         Assert.That(counter.Value, Is.EqualTo(0));
     }
