@@ -96,15 +96,17 @@ namespace CounterApi.Service
         public ICounter? Reset(string name)
         {
             Counter counter = context.Counters.FirstOrDefault(Counter => Counter.Name == name);
-            counter.Reset();
-         
-            context.SaveChanges();
+            if (counter != null)
+            {
+                counter.Reset();
 
+                context.SaveChanges();
+            }
             return counter;
 
         }
 
-        public ICounter? Update(string name, int? max, int? min, int? step, string newName = null)
+        public ICounter? Update(string name, int? max, int? min, int? step, string? newName = null)
         {
             Counter counter = context.Counters.FirstOrDefault(Counter => Counter.Name == name);
             if (counter != null)
@@ -131,7 +133,7 @@ namespace CounterApi.Service
                    
 
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     return null;
                 }

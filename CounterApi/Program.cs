@@ -48,5 +48,8 @@ app.MapPatch("/counter/{name}/reset", (string name, ICounterService service) => 
     .WithTags("Counters")
     .WithName("Reset counter")
     .WithOpenApi();
-
+app.MapDelete("/counter/{name}/delete", (string name, ICounterService service) => service.Delete(name))
+    .WithTags("Counters")
+    .WithName("Delete counter")
+    .WithOpenApi();
 app.Run();
