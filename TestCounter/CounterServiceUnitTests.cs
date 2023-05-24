@@ -108,7 +108,8 @@ public class CounterServiceUnitTests
     public void TestUpdateName()
     {
         ICounterService service = new CounterService(context);
-
+        service.Update("test1", 10, 0, 2);
+        service.Increment("test1");
         var counter = service.Update("test1", null, null, null, "updated");
         
         Assert.Multiple(() =>
@@ -116,6 +117,13 @@ public class CounterServiceUnitTests
             Assert.That(counter, Is.Not.Null);
             Assert.That(service.GetAll().Count(x => x.Name == "updated"), Is.EqualTo(1));
         });
+
+        var updated = service.Get("updated");
+        
+        Assert.That(updated?.Max, Is.EqualTo(10));
+        Assert.That(updated?.Min, Is.EqualTo(0));
+        Assert.That(updated?.Step, Is.EqualTo(2));
+        Assert.That(updated?.Value, Is.EqualTo(2));
     }
 
     [Test]
@@ -190,6 +198,7 @@ public class CounterServiceUnitTests
         {
             Assert.That(counter?.Max, Is.EqualTo(2));
             Assert.That(counter?.Min, Is.EqualTo(1));
+            Assert.That(counter?.Value, Is.EqualTo(1));
         });
     }
 
