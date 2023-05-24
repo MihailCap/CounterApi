@@ -19,32 +19,32 @@ app.MapGet("/counter", (ICounterService service) => service.GetAll())
     .WithName("Get all counters")
     .WithOpenApi();
 //Get one by name
-app.MapGet("/counter/{name}", () => { })
+app.MapGet("/counter/{name}", (string name, ICounterService service) => service.Get(name))
     .WithTags("Counters")
     .WithName("Get counter by name")
     .WithOpenApi();
 //Create counter
-app.MapPost("/counter", () => { })
+app.MapPost("/counter", (string name, ICounterService service) => service.Create(name))
     .WithTags("Counters")
     .WithName("Create counter")
     .WithOpenApi();
 //Update counter
-app.MapPut("/counter/{name}", () => { })
+app.MapPut("/counter/{name}", (string name, int? max, int? min, int? step, string? newName, ICounterService service) => service.Update(name, max, min, step, newName))
     .WithTags("Counters")
     .WithName("Update counter")
     .WithOpenApi();
 //Increment counter
-app.MapPatch("/counter/{name}/increment", () => { })
+app.MapPatch("/counter/{name}/increment", (string name, ICounterService service) => service.Increment(name))
     .WithTags("Counters")
     .WithName("Increment counter")
     .WithOpenApi();
 //Decrement counter
-app.MapPatch("/counter/{name}/decrement", () => { })
+app.MapPatch("/counter/{name}/decrement", (string name, ICounterService service) => service.Decrement(name))
     .WithTags("Counters")
     .WithName("Decrement counter")
     .WithOpenApi();
 //Reset counter
-app.MapPatch("/counter/{name}/reset", () => { })
+app.MapPatch("/counter/{name}/reset", (string name, ICounterService service) => service.Reset(name))
     .WithTags("Counters")
     .WithName("Reset counter")
     .WithOpenApi();
