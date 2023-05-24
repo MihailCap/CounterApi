@@ -7,7 +7,7 @@ namespace CounterApi.Service
     public class CounterService : ICounterService
     {
         private readonly CounterDb context;
-
+        
         public CounterService(CounterDb context)
         {
             this.context = context;
@@ -15,37 +15,58 @@ namespace CounterApi.Service
 
         public ICounter? Create(string name)
         {
-            if (name == null || name == "") { throw new ArgumentNullException("name empty"); }else {
-                Counter C1 = new(name);
-                context.Counters.Add(C1);
-                return C1;
+            if (name != null)  {
+                try
+                {
+                    Counter C1 = new(name);
+                    context.Counters.Add(C1);
+                 
+                    context.SaveChanges();
+                    return C1;
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.ToString());
+                    return null;
+                }
+
+            }
+            else
+            {
+                return null;
             }
         }
 
         public ICounter? Decrement(string name)
         {
 
-            Counter c1 = context.Counters.FirstOrDefault(Counter => Counter.Name == name);
-            if (c1 != null)
+            Counter counter = context.Counters.FirstOrDefault(Counter => Counter.Name == name);
+            if (counter != null)
             {
-                c1.Decrement();
-                return c1;
+                counter.Decrement();
+              
+                context.SaveChanges();
+
             }
-            else
-            {
-                throw new NotImplementedException();
-            }
+            return counter;
         }
 
         public bool Delete(string name)
         {
-            Counter c1 = context.Counters.FirstOrDefault(Counter => Counter.Name == name);
-            if(c1 != null) 
+            Counter counter = context.Counters.FirstOrDefault(Counter => Counter.Name == name);
+            if(counter != null) 
             {
-                context.Counters.Remove(c1);
-            } 
+                context.Counters.Remove(counter);
+                
+                context.SaveChanges();
+                return true;
+            }
+            else
+            {
+                return false;
+            }
 
-            return context.SaveChanges() > 0;
+           
         }
 
         public ICounter? Get(string name)
@@ -60,34 +81,64 @@ namespace CounterApi.Service
 
         public ICounter? Increment(string name)
         {
-            Counter c1 = context.Counters.FirstOrDefault(Counter => Counter.Name == name);
-            if (c1 != null)
+            Counter counter = context.Counters.FirstOrDefault(Counter => Counter.Name == name);
+            if (counter != null)
             {
-                c1.Increment();
+                counter.Increment();
+             
+                context.SaveChanges();
+
             }
-            return c1;
+            return counter;
             
         }
 
         public ICounter? Reset(string name)
         {
-            Counter c1 = context.Counters.FirstOrDefault(Counter => Counter.Name == name);
-            if (c1 != null)
-            {
-                c1.Reset();
-            }
-            return c1;
+            Counter counter = context.Counters.FirstOrDefault(Counter => Counter.Name == name);
+            counter.Reset();
+         
+            context.SaveChanges();
+
+            return counter;
 
         }
 
-        public ICounter? Update(string name, int? max, int? min, int? step, string? newName = null)
+        public ICounter? Update(string name, int? max, int? min, int? step, string newName = null)
         {
-            Counter c1 = context.Counters.FirstOrDefault(Counter => Counter.Name == name);
-            if (c1 != null)
+            Counter counter = context.Counters.FirstOrDefault(Counter => Counter.Name == name);
+            if (counter != null)
             {
-                c1.Update(min, max, step ?? c1.Step, name);
+                try
+                {
+                    if (newName != null && newName != name)
+                    {
+
+                        context.Counters.Remove(counter);
+                        context.SaveChanges(true);
+                        var updatedCounter = new Counter(newName);
+                        updatedCounter.Update(min, max, step);
+                        context.Counters.Add(updatedCounter);
+                        context.SaveChanges();
+                        return updatedCounter;
+                    }
+                    else
+                    {
+                        counter.Update(min, max, step ?? counter.Step);
+                        context.SaveChanges() ;
+                        return counter;
+                    }
+                   
+
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+                
+                
             }
-            return c1;
+            return null;
         }
     }
 }

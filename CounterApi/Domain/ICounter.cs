@@ -10,6 +10,6 @@
         void Increment();
         void Decrement();
         void Reset();
-        void Update(int? min, int? max, int step, string? name = null);
+        void Update(int? min, int? max, int? step);
     }
 }

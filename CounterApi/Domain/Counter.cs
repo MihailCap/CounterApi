@@ -62,37 +62,15 @@ namespace CounterApi.Domain
         }
 
 
-        public void Update(int? min, int? max, int step, string name)
+        public void Update(int? min, int? max, int? step)
         {
-            if (step > 0)
-            {
-                if (max != null && min != null)
-                {
-                    if (min < max)
-                    {
-                        Name = name;
-                        Max = max;
-                        Min = min;
-                        Step = step;
-                    }
-                    else
-                    {
-                        throw new Exception("valore non valido");
-                    }
-
-                }
-                else
-                {
-                    Name = name;
-                    Max = max;
-                    Min = min;
-                    Step = step;
-                }
-            }
-            else
+            if ( (step != null && step <= 0) || (max != null && min != null && max <= min))
             {
                 throw new Exception("valore non valido");
             }
+            Min = min;
+            Max = max;
+            Step = step ?? Step;
         }
 
         

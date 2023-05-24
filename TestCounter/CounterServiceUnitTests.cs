@@ -19,10 +19,11 @@ public class CounterServiceUnitTests
     public void Init()
     {
         var options = new DbContextOptionsBuilder<CounterDb>()
-            .UseInMemoryDatabase(databaseName: "CounterDb")
+            .UseInMemoryDatabase(databaseName: Guid.NewGuid().ToString())
             .Options;
         context = new CounterDb(options);
         context.AddRange(TestDataHelper.GetFakeCountersList());
+        context.SaveChanges();
     }
 
     /// <summary>
@@ -83,7 +84,7 @@ public class CounterServiceUnitTests
     {
         ICounterService service = new CounterService(context);
 
-        var counter = service.Update("test1", null, null, null);
+        var counter = service.Update("test1", null, null, null, null);
         
         Assert.Multiple(() =>
         {
@@ -122,7 +123,7 @@ public class CounterServiceUnitTests
     {
         ICounterService service = new CounterService(context);
 
-        var counter = service.Update("test1", null, null, 2);
+        var counter = service.Update("test1", null, null, 2, null);
         
         Assert.Multiple(() =>
         {
@@ -142,8 +143,8 @@ public class CounterServiceUnitTests
     {
         ICounterService service = new CounterService(context);
 
-        var counter = service.Update("test1", null, null, 2);
-        counter = service.Update(counter?.Name, null, null, null);
+        var counter = service.Update("test1", null, null, 2, null);
+        counter = service.Update(counter?.Name, null, null, null, null);
         
         Assert.Multiple(() =>
         {
@@ -163,7 +164,7 @@ public class CounterServiceUnitTests
     {
         ICounterService service = new CounterService(context);
 
-        var counter = service.Update("test1", null, null, -2);
+        var counter = service.Update("test1", null, null, -2, null);
         
         Assert.Multiple(() =>
         {
@@ -176,7 +177,7 @@ public class CounterServiceUnitTests
     {
         ICounterService service = new CounterService(context);
 
-        var counter = service.Update("test1", 2, 1, null);
+        var counter = service.Update("test1", 2, 1, null, null);
         
         Assert.Multiple(() =>
         {
@@ -197,7 +198,7 @@ public class CounterServiceUnitTests
     {
         ICounterService service = new CounterService(context);
 
-        var counter = service.Update("test1", 1, 2, null);
+        var counter = service.Update("test1", 1, 2, null, null);
         
         Assert.Multiple(() =>
         {
