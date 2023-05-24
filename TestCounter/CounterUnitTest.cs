@@ -114,6 +114,13 @@ public class CounterUnitTests
         Assert.That(counter.Value, Is.EqualTo(3));
         counter.Reset();
         Assert.That(counter.Value, Is.EqualTo(0));
+        
+        counter.Update(1, null, null);
+        counter.Increment();
+        counter.Increment();
+        counter.Increment();
+        counter.Reset();
+        Assert.That(counter.Value, Is.EqualTo(1));
     }
 
     /// <summary>
