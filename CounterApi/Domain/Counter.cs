@@ -28,6 +28,11 @@ namespace CounterApi.Domain
                 if (Value < Max)
                 {
                     Value += Step;
+                    int oldValue = Value;
+                    if(Value > Max)
+                    {
+                        Value = oldValue;
+                    }
                 }
             }
             else
@@ -45,6 +50,11 @@ namespace CounterApi.Domain
                 if (Value > Min)
                 {
                     Value -= Step;
+                    int oldValue = Value;
+                    if (Value < Min)
+                    {
+                        Value = oldValue;
+                    }
                 }
             }
             else
