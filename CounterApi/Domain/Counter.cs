@@ -27,8 +27,9 @@ namespace CounterApi.Domain
             {
                 if (Value < Max)
                 {
-                    Value += Step;
                     int oldValue = Value;
+                    Value += Step;
+                   
                     if(Value > Max)
                     {
                         Value = oldValue;
@@ -49,8 +50,9 @@ namespace CounterApi.Domain
             {
                 if (Value > Min)
                 {
-                    Value -= Step;
                     int oldValue = Value;
+                    Value -= Step;
+                    
                     if (Value < Min)
                     {
                         Value = oldValue;
