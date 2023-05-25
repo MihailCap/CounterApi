@@ -69,9 +69,15 @@ namespace CounterApi.Domain
         public void Reset()
         {
             Value = 0;
-            Min = null;
-            Max = null;
-            Step = 1;
+            if (Value < Min)
+            {
+                Value = Min.Value;
+            }
+            if (Value > Max)
+            {
+                Value = Max.Value;
+            }
+
         }
 
 
