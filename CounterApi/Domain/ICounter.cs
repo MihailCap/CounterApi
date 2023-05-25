@@ -1,4 +1,6 @@
-﻿namespace CounterApi.Domain
+﻿using CounterApi.DTO;
+
+namespace CounterApi.Domain
 {
     public interface ICounter
     {
@@ -11,5 +13,13 @@
         void Decrement();
         void Reset();
         void Update(int? min, int? max, int? step);
+    }
+
+    public static class ICounterExtension
+    {
+        public static CounterDto toDto(this ICounter counter)
+        {
+            return CounterDto.From(counter);
+        }
     }
 }
