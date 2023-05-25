@@ -120,7 +120,14 @@ namespace CounterApi.Service
                         context.SaveChanges(true);
                         var updatedCounter = new Counter(newName);
                         updatedCounter.Value = saveCounter.Value;
-                        updatedCounter.Update(min ?? saveCounter.Min, max ?? saveCounter.Max, step ?? saveCounter.Step);
+                        if (min == null && max == null && step == null)
+                        {
+                            updatedCounter.Update(saveCounter.Min, saveCounter.Max, saveCounter.Step);
+                        }
+                        else
+                        {
+                            updatedCounter.Update(min, max, step ?? saveCounter.Step);
+                        }
                         context.Counters.Add(updatedCounter);
                         context.SaveChanges();
                         return updatedCounter;
