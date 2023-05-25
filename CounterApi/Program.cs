@@ -1,5 +1,7 @@
+using CounterApi.DTO;
 using CounterApi.Persistence;
 using CounterApi.Service;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.OpenApi;
 
@@ -19,37 +21,37 @@ app.MapGet("/counter", (ICounterService service) => service.GetAll())
     .WithName("Get all counters")
     .WithOpenApi();
 //Get one by name
-app.MapGet("/counter/{name}", (string name, ICounterService service) => service.Get(name))
+app.MapGet("/counter/{name}", ([FromRoute] string name, ICounterService service) => service.Get(name))
     .WithTags("Counters")
     .WithName("Get counter by name")
     .WithOpenApi();
 //Create counter
-app.MapPost("/counter", (string name, ICounterService service) => service.Create(name))
+app.MapPost("/counter", ([FromQuery] string name, ICounterService service) => service.Create(name))
     .WithTags("Counters")
     .WithName("Create counter")
     .WithOpenApi();
 //Update counter
-app.MapPut("/counter/{name}", (string name, int? max, int? min, int? step, string? newName, ICounterService service) => service.Update(name, max, min, step, newName))
+app.MapPut("/counter/{name}", ([FromRoute] string name,  [FromBody] CounterDto counter, ICounterService service) => service.Update(name, counter.Max, counter.Min, counter.Step, counter.Name))
     .WithTags("Counters")
     .WithName("Update counter")
     .WithOpenApi();
 //Increment counter
-app.MapPatch("/counter/{name}/increment", (string name, ICounterService service) => service.Increment(name))
+app.MapPatch("/counter/{name}/increment", ([FromRoute] string name, ICounterService service) => service.Increment(name))
     .WithTags("Counters")
     .WithName("Increment counter")
     .WithOpenApi();
 //Decrement counter
-app.MapPatch("/counter/{name}/decrement", (string name, ICounterService service) => service.Decrement(name))
+app.MapPatch("/counter/{name}/decrement", ([FromRoute] string name, ICounterService service) => service.Decrement(name))
     .WithTags("Counters")
     .WithName("Decrement counter")
     .WithOpenApi();
 //Reset counter
-app.MapPatch("/counter/{name}/reset", (string name, ICounterService service) => service.Reset(name))
+app.MapPatch("/counter/{name}/reset", ([FromRoute] string name, ICounterService service) => service.Reset(name))
     .WithTags("Counters")
     .WithName("Reset counter")
     .WithOpenApi();
 //Delete counter
-app.MapDelete("/counter/{name}/delete", (string name, ICounterService service) => service.Delete(name))
+app.MapDelete("/counter/{name}/delete", ([FromRoute] string name, ICounterService service) => service.Delete(name))
    .WithTags("Counters")
    .WithName("Delete counter")
    .WithOpenApi();
