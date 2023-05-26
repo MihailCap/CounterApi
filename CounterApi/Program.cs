@@ -6,16 +6,28 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.OpenApi;
 
+var CorsPolicy = "_corsPolicy";
+
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<CounterDb>(opt => opt.UseInMemoryDatabase("CounterList"));
 builder.Services.AddTransient<ICounterService, CounterService>();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: CorsPolicy,
+        policy  =>
+        {
+            policy.AllowAnyHeader();
+            policy.AllowAnyOrigin();
+            policy.AllowAnyMethod();
+        });
+});
 var app = builder.Build();
 
 app.UseSwagger();
 app.UseSwaggerUI();
-
+app.UseCors(CorsPolicy);
 // Get all
 app.MapGet("/counter", (ICounterService service) => service.GetAll().Select(x => x.toDto()).ToList())
     .WithTags("Counters")
