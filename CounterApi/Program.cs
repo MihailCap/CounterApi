@@ -5,11 +5,18 @@ using CounterApi.Service;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.OpenApi;
+using MySqlConnector;
 
 var CorsPolicy = "_corsPolicy";
 
+
+
 var builder = WebApplication.CreateBuilder(args);
-builder.Services.AddDbContext<CounterDb>(opt => opt.UseInMemoryDatabase("CounterList"));
+builder.Services.AddDbContext<CounterDb>(opt =>
+    opt.UseMySql(builder.Configuration.GetConnectionString("DefaultConnection"), new MySqlServerVersion(new Version(8, 0, 26)),
+        options => options.EnableRetryOnFailure()));
+
+
 builder.Services.AddTransient<ICounterService, CounterService>();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -23,6 +30,8 @@ builder.Services.AddCors(options =>
             policy.AllowAnyMethod();
         });
 });
+
+
 var app = builder.Build();
 
 app.UseSwagger();
@@ -68,4 +77,5 @@ app.MapDelete("/counter/{name}/delete", ([FromRoute] string name, ICounterServic
    .WithTags("Counters")
    .WithName("Delete counter")
    .WithOpenApi();
+
 app.Run();
